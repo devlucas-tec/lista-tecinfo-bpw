@@ -1,4 +1,6 @@
+import { GerenciadorBatalha } from "./utils/batalha";
 import { Calculadora } from "./utils/calculadora";
+import { CalculadoraDelivery } from "./utils/delivery";
 
 const calculadora = new Calculadora();
 
@@ -7,6 +9,7 @@ const resultado = calculadora.gerarPedido({
   valorCalculado: { valor: 100, desconto: 10 },
 });
 
+console.log("===== CALCULADORA =====")
 console.log(resultado);
 
 // Desafio 2: Calcular Frete
@@ -29,3 +32,32 @@ console.log(
     distancia: 10,
   }),
 );
+
+console.log("===== FIM CALCULADORA =====")
+
+console.log("\n===== BATALHA =====")
+
+const batalha = new GerenciadorBatalha()
+
+const resumoBatalha = batalha.processarTurno({
+  nomeAtacante: "Mago",
+  nomeDefensor: "Tanque",
+  danoAtaque: 200,
+  defesaDefensor: 350,
+  ehGolpeCritico: true
+})
+
+console.log(resumoBatalha)
+
+console.log("===== FIM BATALHA =====")
+
+console.log("\n===== DELIVERY =====")
+const delivery = new CalculadoraDelivery()
+const resumoDelivery = delivery.calcularEntrega({
+  distanciaKm: 100,
+  valorPedido: 100,
+  estaChovendo: true
+})
+
+console.log(resumoDelivery)
+console.log("===== FIM DELIVERY =====")
