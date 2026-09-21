@@ -3,6 +3,7 @@ import { GerenciadorBatalha } from "./utils/batalha";
 import { GestorEmprestimos } from "./utils/biblioteca";
 import { Calculadora } from "./utils/calculadora";
 import { CalculadoraDelivery } from "./utils/delivery";
+import { GestorEsroque } from "./utils/estoque";
 
 const calculadora = new Calculadora();
 
@@ -88,3 +89,15 @@ const resumoBiblioteca = biblioteca.calcularPrazoDevolucao({
 
 console.log(resumoBiblioteca);
 console.log("===== FIM BIBLIOTECA =====");
+
+console.log("\n===== ESTOQUE =====");
+const estoque = new GestorEsroque();
+const resumoEstoque = estoque.avaliarNecessidadeReposicao({
+  nomeProduto: "Produto A",
+  quantidadeAtual: 50,
+  estoqueMinimo: 100,
+  tamanhoLote: 20,
+});
+
+console.log(resumoEstoque);
+console.log("===== FIM ESTOQUE =====");
