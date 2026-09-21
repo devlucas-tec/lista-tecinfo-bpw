@@ -1,4 +1,6 @@
+import { ProcessadorPix } from "./utils/banco";
 import { GerenciadorBatalha } from "./utils/batalha";
+import { GestorEmprestimos } from "./utils/biblioteca";
 import { Calculadora } from "./utils/calculadora";
 import { CalculadoraDelivery } from "./utils/delivery";
 
@@ -9,7 +11,7 @@ const resultado = calculadora.gerarPedido({
   valorCalculado: { valor: 100, desconto: 10 },
 });
 
-console.log("===== CALCULADORA =====")
+console.log("===== CALCULADORA =====");
 console.log(resultado);
 
 // Desafio 2: Calcular Frete
@@ -33,31 +35,56 @@ console.log(
   }),
 );
 
-console.log("===== FIM CALCULADORA =====")
+console.log("===== FIM CALCULADORA =====");
 
-console.log("\n===== BATALHA =====")
+console.log("\n===== BATALHA =====");
 
-const batalha = new GerenciadorBatalha()
+const batalha = new GerenciadorBatalha();
 
 const resumoBatalha = batalha.processarTurno({
   nomeAtacante: "Mago",
   nomeDefensor: "Tanque",
   danoAtaque: 200,
   defesaDefensor: 350,
-  ehGolpeCritico: true
-})
+  ehGolpeCritico: true,
+});
 
-console.log(resumoBatalha)
+console.log(resumoBatalha);
 
-console.log("===== FIM BATALHA =====")
+console.log("===== FIM BATALHA =====");
 
-console.log("\n===== DELIVERY =====")
-const delivery = new CalculadoraDelivery()
+console.log("\n===== DELIVERY =====");
+const delivery = new CalculadoraDelivery();
 const resumoDelivery = delivery.calcularEntrega({
   distanciaKm: 100,
   valorPedido: 100,
-  estaChovendo: true
-})
+  estaChovendo: true,
+});
 
-console.log(resumoDelivery)
-console.log("===== FIM DELIVERY =====")
+console.log(resumoDelivery);
+console.log("===== FIM DELIVERY =====");
+
+console.log("\n===== BANCO =====");
+
+const banco = new ProcessadorPix();
+const transacaoPix = banco.processarCobranca({
+  nomeEmpresa: "Empresa X",
+  valorTransacao: 1000,
+  tipoChave: "chave aleatoria",
+  ehClientePremium: true,
+});
+
+console.log(transacaoPix);
+console.log("===== FIM BANCO =====");
+
+console.log("\n===== BIBLIOTECA =====");
+const biblioteca = new GestorEmprestimos();
+const resumoBiblioteca = biblioteca.calcularPrazoDevolucao({
+  tituloLivro: "O Senhor dos Anéis",
+  diasPadrao: 14,
+  ehEstudante: true,
+  diasAtrasoAnterior: 3,
+});
+
+console.log(resumoBiblioteca);
+console.log("===== FIM BIBLIOTECA =====");
